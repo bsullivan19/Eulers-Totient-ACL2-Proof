@@ -63,6 +63,9 @@
 
 ; ******************* END INITIALIZATION FOR ACL2s MODE ******************* ;
 ;$ACL2s-SMode$;ACL2s
+
+;; Brett Sullivan and Mary Ragheb
+
 ;; A NZN is an Integer > 0
 ;; represents a non-zero-nat
 (defdata nzn (range integer (0 < _)))
