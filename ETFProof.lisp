@@ -117,12 +117,7 @@
                                (natp x))
                           (implies (not (zp x))
                                    (implies 
-                                    (and (implies (coprimep n x)
-                                                  (<= (1+ (etf-helper n (1- x)))
-                                                      x))
-                                         (implies (not (coprimep n x))
-                                                  (<= (etf-helper n (1- x))
-                                                      (1- x))))
+                                    (<= (etf-helper n (1- x)) (1- x))
                                     (<= (etf-helper n x)
                                         x)))))
 
@@ -150,23 +145,23 @@
 ;; Theorem: etf-bounded-by-n 
 ;; (<= (etf n) n)
 
-;; Proof by Induction on n.
+;; Broken into 2 sublemmatta 
 
-;; Base-Case
-(defthm bbn-bc (implies (nznp n)
+;; Case 1
+(defthm bbn-c1 (implies (nznp n)
                         (implies (= n 1)
                                  (<= (etf n)
                                      n))))
 
-;; Inductive-case
-(defthm bbn-ic (implies (nznp n)
+;; Case 2
+(defthm bbn-c2 (implies (nznp n)
                         (implies (not (= n 1))
                                  (implies (<= (etf-helper n (1- n))
                                               n)
                                           (<= (etf n)
                                               n)))))
 
-;; By proving the bc and the ic, we show the theorem holds
+;; By proving the c1 and the c2, we show the theorem holds
 (defthm bbn (implies (nznp n)
                      (<= (etf n)
                          n)))#|ACL2s-ToDo-Line|#
